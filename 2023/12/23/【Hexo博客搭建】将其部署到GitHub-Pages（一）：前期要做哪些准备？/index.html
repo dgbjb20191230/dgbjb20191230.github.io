@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.0.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha256-yIDrPSXHZdOZhAqiBP7CKzIwMQmRCJ8UeB8Jo17YC4o=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":"ture","version":"8.19.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="简介： 本系列文章属于半笔记半教程的零基础小白入门文，教你将 Hexo 部署到 GitHub Pages 的前期需要做哪些准备，跟着此系列文章最终可以获得自己的静态博客网站。流程很长，分成不同的篇幅，此为本系列的第一篇。   【注意】：本文纯属才疏尚浅的我以笔记的形式进行的记录，很多知识其实我也不是太懂，可能存在理解偏差和错误，来学习的朋友们请自己甄别，路过的大神们也别喷我哈哈哈，有什么建议和问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Hexo博客搭建】将其部署到GitHub Pages（一）：前期要做哪些准备？">
+<meta property="og:url" content="http://example.com/2023/12/23/%E3%80%90Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E3%80%91%E5%B0%86%E5%85%B6%E9%83%A8%E7%BD%B2%E5%88%B0GitHub-Pages%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%89%8D%E6%9C%9F%E8%A6%81%E5%81%9A%E5%93%AA%E4%BA%9B%E5%87%86%E5%A4%87%EF%BC%9F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简介： 本系列文章属于半笔记半教程的零基础小白入门文，教你将 Hexo 部署到 GitHub Pages 的前期需要做哪些准备，跟着此系列文章最终可以获得自己的静态博客网站。流程很长，分成不同的篇幅，此为本系列的第一篇。   【注意】：本文纯属才疏尚浅的我以笔记的形式进行的记录，很多知识其实我也不是太懂，可能存在理解偏差和错误，来学习的朋友们请自己甄别，路过的大神们也别喷我哈哈哈，有什么建议和问">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-12-23T04:54:06.000Z">
+<meta property="article:modified_time" content="2023-12-23T04:57:35.217Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/12/23/%E3%80%90Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E3%80%91%E5%B0%86%E5%85%B6%E9%83%A8%E7%BD%B2%E5%88%B0GitHub-Pages%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%89%8D%E6%9C%9F%E8%A6%81%E5%81%9A%E5%93%AA%E4%BA%9B%E5%87%86%E5%A4%87%EF%BC%9F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/12/23/%E3%80%90Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E3%80%91%E5%B0%86%E5%85%B6%E9%83%A8%E7%BD%B2%E5%88%B0GitHub-Pages%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%89%8D%E6%9C%9F%E8%A6%81%E5%81%9A%E5%93%AA%E4%BA%9B%E5%87%86%E5%A4%87%EF%BC%9F/","path":"2023/12/23/【Hexo博客搭建】将其部署到GitHub-Pages（一）：前期要做哪些准备？/","title":"【Hexo博客搭建】将其部署到GitHub Pages（一）：前期要做哪些准备？"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【Hexo博客搭建】将其部署到GitHub Pages（一）：前期要做哪些准备？ | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BA%86%E8%A7%A3%E5%B9%B6%E5%88%9B%E5%BB%BAGitHub%E8%B4%A6%E5%8F%B7%E5%92%8C%E4%BB%93%E5%BA%93"><span class="nav-number">1.1.</span> <span class="nav-text">一、了解并创建GitHub账号和仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%B3%A8%E5%86%8CGitHub%E8%B4%A6%E5%8F%B7"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 注册GitHub账号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%9C%A8-GitHub-%E4%B8%8A%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 在 GitHub 上创建一个新的项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85-VS-Code"><span class="nav-number">1.2.</span> <span class="nav-text">二、安装 VS Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E8%A3%85-Git"><span class="nav-number">1.3.</span> <span class="nav-text">三、安装 Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E8%A3%85-Node-js"><span class="nav-number">1.4.</span> <span class="nav-text">四、安装 Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">1.5.</span> <span class="nav-text">五、安装Hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/yourname" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/yourname" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:yourname?call|chat" title="Skype → skype:yourname?call|chat" rel="noopener me" target="_blank"><i class="fab fa-skype fa-fw"></i>Skype</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/12/23/%E3%80%90Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E3%80%91%E5%B0%86%E5%85%B6%E9%83%A8%E7%BD%B2%E5%88%B0GitHub-Pages%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%89%8D%E6%9C%9F%E8%A6%81%E5%81%9A%E5%93%AA%E4%BA%9B%E5%87%86%E5%A4%87%EF%BC%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【Hexo博客搭建】将其部署到GitHub Pages（一）：前期要做哪些准备？ | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Hexo博客搭建】将其部署到GitHub Pages（一）：前期要做哪些准备？
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-12-23 12:54:06 / Modified: 12:57:35" itemprop="dateCreated datePublished" datetime="2023-12-23T12:54:06+08:00">2023-12-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><strong>简介：</strong> 本系列文章属于半笔记半教程的零基础小白入门文，教你将 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Hexo&spm=1001.2101.3001.7020">Hexo</a> 部署到 GitHub Pages 的前期需要做哪些准备，跟着此系列文章最终可以获得自己的静态博客网站。流程很长，分成不同的篇幅，此为本系列的第一篇。</p>
+</blockquote>
+<blockquote>
+<p><strong>【注意】</strong>：本文纯属才疏尚浅的我以笔记的形式进行的记录，很多知识其实我也不是太懂，可能存在理解偏差和错误，来学习的朋友们请自己甄别，路过的大神们也别喷我哈哈哈，有什么建议和问题可以评论提出或者其它方式联系我。我会尽可能保持更新该文章所使用到的技术和做法，并随时接受勘误。</p>
+</blockquote>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="一、了解并创建GitHub账号和仓库"><a href="#一、了解并创建GitHub账号和仓库" class="headerlink" title="一、了解并创建GitHub账号和仓库"></a>一、了解并创建GitHub账号和仓库</h3><p>GitHub是一个面向开源及私有软件项目的托管平台，也是世界上最大的代码托管平台，因为只支持Git作为唯一的版本库格式进行托管，故名GitHub。<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=GitHub%E4%B8%AD%E6%96%87&spm=1001.2101.3001.7020">GitHub中文</a>社区,是国内领先的开源社区,是一个可以发现优质开源项目的地方。</p>
+<h4 id="1-注册GitHub账号"><a href="#1-注册GitHub账号" class="headerlink" title="1. 注册GitHub账号"></a>1. 注册GitHub账号</h4><p>虽然都是英文，但不必畏惧，也并不会造成使用障碍，只要记得最常用的选项含义即可，以及善用浏览器的网页翻译功能和手头的翻译软件。</p>
+<blockquote>
+<p>注意：注册时的英文用户名将成为你可以使用的免费域名前缀。</p>
+</blockquote>
+<p>注册流程非常简单，这里不再赘述。</p>
+<h4 id="2-在-GitHub-上创建一个新的项目"><a href="#2-在-GitHub-上创建一个新的项目" class="headerlink" title="2. 在 GitHub 上创建一个新的项目"></a>2. 在 GitHub 上创建一个新的项目</h4><p>单击 右上角【+】- New Repository 新建项目。（以下简称仓库）</p>
+<p>然后填写项目信息。</p>
+<p>仓库的名字格式应为：<code>用户名.github.io</code></p>
+<blockquote>
+<p>为什么必须这个作为仓库名？</p>
+<p>因为这是GitHub Pages 服务的命名规范，同时它也将成为你的专属域名。</p>
+<p>当然，你也可以购置自己的专属域名并用它来提供内容。</p>
+</blockquote>
+<p>比如我的用户名是aizhiqian，那么我的仓库就叫：<code>aizhiqian.github.io</code></p>
+<p>(全部小写更好，有大写也没事，除了大小写切换有一丢丢麻烦外没有区别）</p>
+<p>在description一栏填写简介，随便填填，比如我填的是：<code>个人博客</code></p>
+<p>然后选择 Public。</p>
+<p>最后勾选 Initialize the repository with a README。</p>
+<blockquote>
+<p>此步的作用是用一个 README.md 对这个仓库进行初始化</p>
+</blockquote>
+<p>完成后点击下面的 Create Repository。</p>
+<h3 id="二、安装-VS-Code"><a href="#二、安装-VS-Code" class="headerlink" title="二、安装 VS Code"></a>二、安装 VS Code</h3><p>在安装Git之前，我建议先安装 VS Code。因为安装 Git Bash 时，可以设置 VS Code 作为默认编辑器。Visual Studio Code，简称 VS Code。目前最为强大易用的编辑器，轻量且快速。（宇宙第一编辑器哈哈哈）</p>
+<blockquote>
+<p>注意：它并不是我们常常听到的 VS，VS 常常指的是 Visual Studio，是一个功能强大的 IDE（集成开发环境），体积要比 VS Code 都要大上一个量级。</p>
+</blockquote>
+<p>对于它的安装，直接搜官网下载就行了，免费的，不再赘述。</p>
+<h3 id="三、安装-Git"><a href="#三、安装-Git" class="headerlink" title="三、安装 Git"></a>三、安装 Git</h3><p>Git 是一个开源的分布式版本控制系统，由 Linus Torvalds（同时也是 Linux 的作者）为了管理 Linux 开发而开发。类似的工具还有：SVN。但始终更推荐 Git，因为它功能更为强大且它的背后还有更强大的生态：GitHub。</p>
+<p>你可以直接去官网下载Git并安装，如果国内网速太慢可以“科学上网”或者从其他平台下载。MacOS 用户可以下载官网的安装包进行安装，也可以直接安装 App Store 的 Xcode（附带会安装 Git，但是比较大）。安装时一路next到底就行了，也可以在网上找教程，我不再多说。</p>
+<blockquote>
+<p><em>可参考安装教程</em><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/mukes/article/details/115693833">Git 详细安装教程（详解 Git 安装过程的每一个步骤）</a></p>
+</blockquote>
+<h3 id="四、安装-Node-js"><a href="#四、安装-Node-js" class="headerlink" title="四、安装 Node.js"></a>四、安装 Node.js</h3><p>何为Node.js ？Node.js 是一个基于Chrome JavaScript 运行时建立的一个平台。简单的说 Node.js 就是运行在服务端的 JavaScript。Node.js是一个事件驱动I&#x2F;O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。</p>
+<blockquote>
+<p>想进一步了解的朋友们可以去官网浏览官方文档。</p>
+</blockquote>
+<p>建议下载长期支持版，而非当前发布版，因为如果是最新版，容易出现一些奇妙的 bug。全部默认下一步进行安装。然后Windows 用户打开命令提示符，即按住键盘 Win+R，输入cmd然后回车，弹出黑色代码窗口。</p>
+<blockquote>
+<p><em>可参考安装教程</em><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42006801/article/details/124830995?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168489482216800182783090%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168489482216800182783090&biz_id=0&spm=1018.2226.3001.4187">Node.js安装与配置（详细步骤）</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44893902/article/details/121788104?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168489482216800182783090%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168489482216800182783090&biz_id=0&spm=1018.2226.3001.4187">node.js安装及环境配置超详细教程【Windows系统安装包方式】</a></p>
+</blockquote>
+<p>后续如提到输入命令，均默认指打开终端进行输入。</p>
+<p>输入<code>node --version</code>回车，如果得到的版本号与你方才安装的一致，那么 Node.js 就已经成功安装。</p>
+<blockquote>
+<p>Node.js 安装成功时也默认安装了 npm，在此后将会用到。npm 是随 Node.js 一起被安装的包管理工具，你可以理解成 Node.js 自带的应用商店。</p>
+</blockquote>
+<p>对了，国内使用 npm 可能很慢，你可以“科学上网”，或者考虑切换为 taobao 镜像源，即手动输入以下内容后按回车（也可以Ctrl+C和Ctrl+V复制以下代码按回车）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npm.taobao.org</span><br><span class="line">&lt;div class=&quot;hljs-button &#123;2&#125;&quot; data-title=&quot;复制&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="五、安装Hexo"><a href="#五、安装Hexo" class="headerlink" title="五、安装Hexo"></a>五、安装Hexo</h3><p>Hexo 是一个快速、简洁而强大的博客框架，基于 Node.js，同样托管于 GitHub 之上。生态中拥有众多插件主题。你可以基于它快速生成一些静态页面。你可以使用别人的各种主题与插件，也可以自己定制开发想要的功能。</p>
+<blockquote>
+<p>为什么不是…?</p>
+<p>其他常用的博客框架还有 WordPress，Typecho，Ghost 等，但这些往往都需要购置自己的服务器，而无法静态化地部署到 GitHub Pages 上。（当然，相应的功能和灵活性也大大提升。）静态化站点还有一个优势就是访问速度往往更快。</p>
+<p>静态网站生成器还有 Vuepress，Gatsby 等。但这些多是为了写文档而量身定制的，你也可以使用它们，但是相较 Hexo 的博客定位，它们关于博客的插件和主题以及解决办法会少得多。</p>
+<p>Hexo 提供的功能与 Hugo 几乎都有，（生成大量文件时，甚至比 Hexo 更快）不过它是基于 GO 语言。日后你想对自己的网站进行自定义，即便是 Hugo，你编写前端的交互仍旧需要使用 JavaScript，所以选择基于 JavaScript 的 Hexo 可以降低学习成本。（你若对 GO 有兴趣，仍然可以尝试使用 Hugo，但本教程将不会针对 Hugo 进行展开。）</p>
+<p>所以对于新手来说，使用 Hexo 作为起始点，不失为一个好选择。（当然如果你有钱租服务器，并希望快速上手的话，就可以考虑考虑 WordPress 或者 Typecho）</p>
+</blockquote>
+<p>如何安装Hexo呢?</p>
+<p>在cmd终端窗口中输入以下命令后回车：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">&lt;div class=&quot;hljs-button &#123;2&#125;&quot; data-title=&quot;复制&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后等待一会进度条走完，没报错就代表安装成功。</p>
+<p>进度条卡住不动可能还是国内网络问题，“科学上网”哦，咳咳…</p>
+<blockquote>
+<p>如果安装失败，可能是没有权限，可以尝试头部加上 sudo 重新执行，即输入：</p>
+<p><code>sudo npm install hexo-cli -g</code>然后回车</p>
+</blockquote>
+<p>上面命令中，</p>
+<p>install 自然是安装。</p>
+<p>hexo-cli 则是 hexo 的终端工具，可以帮助你生成一些模版文件，之后再用到。</p>
+<p>-g 代表的是全局安装。也就是在任何地方都可以使用，否则会只能在安装的目录下使用。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/12/23/%E3%80%90Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E3%80%91%E5%B0%86%E5%85%B6%E9%83%A8%E7%BD%B2%E5%88%B0GitHub-Pages%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E5%A6%82%E4%BD%95%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B9%B6%E9%83%A8%E7%BD%B2%EF%BC%9F/" rel="next" title="【Hexo博客搭建】将其部署到GitHub Pages（二）：如何初始化并部署？">
+                  【Hexo博客搭建】将其部署到GitHub Pages（二）：如何初始化并部署？ <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments giscus-container">
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2023</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">John Doe</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="giscus" type="application/json">{"enable":true,"repo":"dgbjb20191230/dgbjb20191230.github.io","repo_id":"R_kgDOK9OOIA","category":"Announcements","category_id":"DIC_kwDOK9OOIM4Cb9tQ","mapping":"pathname","reactions_enabled":1,"emit_metadata":1,"theme":"light","lang":"en","crossorigin":"anonymous","input_position":"bottom","loading":"lazy"}</script>
+
+<script>
+document.addEventListener('page:loaded', () => {
+  if (!CONFIG.page.comments) return;
+
+  NexT.utils.loadComments('.giscus-container')
+    .then(() => NexT.utils.getScript('https://giscus.app/client.js', {
+      attributes: {
+        async                   : true,
+        crossOrigin             : 'anonymous',
+        'data-repo'             : CONFIG.giscus.repo,
+        'data-repo-id'          : CONFIG.giscus.repo_id,
+        'data-category'         : CONFIG.giscus.category,
+        'data-category-id'      : CONFIG.giscus.category_id,
+        'data-mapping'          : CONFIG.giscus.mapping,
+        'data-reactions-enabled': CONFIG.giscus.reactions_enabled,
+        'data-emit-metadata'    : CONFIG.giscus.emit_metadata,
+        'data-theme'            : CONFIG.giscus.theme,
+        'data-lang'             : CONFIG.giscus.lang,
+        'data-input-position'   : CONFIG.giscus.input_position,
+        'data-loading'          : CONFIG.giscus.loading
+      },
+      parentNode: document.querySelector('.giscus-container')
+    }));
+});
+</script>
+
+</body>
+</html>
